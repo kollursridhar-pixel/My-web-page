@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sridhar Kollur — Supply Chain & ERP Transformation Advisor</title>
+<meta name="description" content="Senior Supply Chain & ERP Transformation Advisor. 25+ years delivering measurable results for European businesses. Based in the Netherlands.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0D1117; --ink-light: #1A2333; --gold: #C9A84C; --gold-light: #E8CC85;
+  --gold-pale: #F7EDD4; --cream: #FAF7F2; --mist: #EEE9E0; --white: #FFFFFF;
+  --text: #2C3440; --text-muted: #6B7280; --rule: #D4C9B4;
+  --success: #2D6A4F; --error: #9B2335;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+::-webkit-scrollbar { width: 3px; } ::-webkit-scrollbar-track { background: var(--mist); } ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 60px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(13,17,23,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(201,168,76,0.1); }
+.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-diamond { width: 28px; height: 28px; border: 1.5px solid var(--gold); display: grid; place-items: center; transform: rotate(45deg); }
+.nav-diamond-inner { width: 10px; height: 10px; background: var(--gold); }
+.nav-name { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; }
+.nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+.nav-links a { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold) !important; color: var(--ink) !important; padding: 8px 20px !important; font-weight: 600 !important; }
+.nav-cta:hover { background: var(--gold-light) !important; }
+.hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 1.5px; background: rgba(255,255,255,0.7); }
+
+/* HERO */
+.hero { min-height: 100vh; background: var(--ink); display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 64px; }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px); background-size: 64px 64px; pointer-events: none; }
+.hero-glow { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 65%); top: -200px; right: -150px; pointer-events: none; }
+.hero-glow-2 { position: absolute; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 65%); bottom: 0; left: 100px; pointer-events: none; }
+.hero-inner { max-width: 1200px; margin: 0 auto; padding: 100px 80px; position: relative; z-index: 2; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 100px; align-items: center; width: 100%; }
+.hero-eyebrow { display: flex; align-items: center; gap: 12px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-bottom: 28px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.1s; }
+.hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+.hero-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(44px, 4.5vw, 68px); font-weight: 300; color: var(--white); line-height: 1.08; margin-bottom: 28px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.25s; }
+.hero-headline em { color: var(--gold); font-style: italic; }
+.hero-sub { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.8; max-width: 480px; margin-bottom: 48px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.4s; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s ease forwards 0.55s; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--ink); font-size: 12px; font-weight: 600; font-family: 'DM Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 28px; text-decoration: none; transition: all 0.25s; border: none; cursor: pointer; }
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.25); }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.7); font-size: 12px; font-family: 'DM Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 28px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: all 0.25s; cursor: pointer; }
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+.hero-proof { opacity: 0; animation: fadeLeft 0.7s ease forwards 0.5s; }
+.proof-card { border: 1px solid rgba(201,168,76,0.15); background: rgba(255,255,255,0.03); padding: 36px; margin-bottom: 2px; transition: background 0.3s; }
+.proof-card:hover { background: rgba(201,168,76,0.06); }
+.proof-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 600; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+.proof-label { font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 500; margin-bottom: 6px; }
+.proof-context { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.06em; color: rgba(255,255,255,0.3); line-height: 1.6; }
+.location-tag { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-top: 24px; }
+.live-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ADE80; animation: livePulse 2s infinite; }
+@keyframes livePulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,0.4);}50%{opacity:0.7;box-shadow:0 0 0 5px rgba(74,222,128,0);} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
+@keyframes fadeLeft { from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:translateX(0);} }
+
+/* TICKER */
+.problem-band { background: var(--gold); padding: 24px 0; overflow: hidden; }
+.problem-ticker { display: flex; gap: 60px; animation: ticker 30s linear infinite; white-space: nowrap; }
+.problem-item { display: inline-flex; align-items: center; gap: 16px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); font-weight: 500; flex-shrink: 0; }
+.problem-item::before { content: '◆'; font-size: 8px; color: rgba(13,17,23,0.4); }
+@keyframes ticker { from{transform:translateX(0);}to{transform:translateX(-50%);} }
+
+/* PROBLEM SECTION */
+.problems-section { background: var(--ink-light); padding: 120px 80px; }
+.problems-inner { max-width: 1200px; margin: 0 auto; }
+.problems-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(201,168,76,0.08); margin-top: 64px; }
+.problem-card { background: rgba(255,255,255,0.02); padding: 44px 40px; transition: background 0.3s; }
+.problem-card:hover { background: rgba(201,168,76,0.06); }
+.problem-q { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: rgba(255,255,255,0.8); margin-bottom: 16px; font-style: italic; line-height: 1.4; }
+.problem-a { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.75; }
+.problem-a strong { color: var(--gold-light); font-weight: 500; }
+
+/* SECTION HEADERS */
+.section-hd { display: flex; align-items: flex-end; gap: 20px; margin-bottom: 64px; }
+.section-num { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; padding-bottom: 4px; white-space: nowrap; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 3vw, 48px); font-weight: 300; color: var(--ink); line-height: 1; }
+.section-rule { flex: 1; height: 1px; background: linear-gradient(to right, var(--gold), transparent); margin-bottom: 8px; }
+
+/* SERVICES */
+.services-wrap { padding: 120px 80px; background: var(--cream); }
+.services-inner { max-width: 1200px; margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--rule); }
+.svc-card { background: var(--white); padding: 44px 36px; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+.svc-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--gold), var(--gold-light)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+.svc-card:hover { transform: translateY(-5px); box-shadow: 0 24px 60px rgba(13,17,23,0.1); }
+.svc-card:hover::after { transform: scaleX(1); }
+.svc-num { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 20px; }
+.svc-icon { font-size: 28px; margin-bottom: 24px; display: block; }
+.svc-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: var(--ink); line-height: 1.2; margin-bottom: 8px; }
+.svc-tag { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.svc-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.75; margin-bottom: 28px; }
+.svc-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px; }
+.svc-list li { font-size: 12.5px; color: var(--text); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+.svc-list li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 6px; }
+.svc-footer { padding-top: 24px; border-top: 1px solid var(--mist); display: flex; align-items: center; justify-content: space-between; }
+.svc-rate { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--ink); }
+.svc-rate small { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--text-muted); font-weight: 400; }
+.svc-badge { background: var(--gold-pale); color: var(--gold); font-size: 9px; font-family: 'DM Mono', monospace; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border: 1px solid rgba(201,168,76,0.3); }
+
+/* PROCESS */
+.process-section { background: var(--mist); padding: 120px 80px; }
+.process-inner { max-width: 1200px; margin: 0 auto; }
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 64px; position: relative; }
+.process-steps::before { content: ''; position: absolute; top: 36px; left: 10%; right: 10%; height: 1px; background: linear-gradient(to right, var(--gold), rgba(201,168,76,0.2), var(--gold)); pointer-events: none; }
+.step { padding: 0 24px; text-align: center; }
+.step-num { width: 72px; height: 72px; border: 1.5px solid var(--gold); border-radius: 50%; display: grid; place-items: center; margin: 0 auto 28px; background: var(--cream); position: relative; z-index: 1; transition: all 0.3s; }
+.step:hover .step-num { background: var(--gold); }
+.step:hover .step-n { color: var(--ink); }
+.step-n { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: var(--gold); transition: color 0.3s; }
+.step-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+.step-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.7; }
+
+/* INDUSTRIES */
+.industries-section { padding: 120px 80px; max-width: 1200px; margin: 0 auto; }
+.industries-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 64px; }
+.ind-item { border: 1px solid var(--rule); padding: 28px 16px; text-align: center; transition: all 0.3s; background: var(--white); }
+.ind-item:hover { border-color: var(--gold); background: var(--gold-pale); transform: translateY(-3px); }
+.ind-icon { font-size: 26px; margin-bottom: 12px; display: block; }
+.ind-name { font-size: 12px; font-weight: 500; color: var(--text); line-height: 1.4; }
+
+/* TESTIMONIAL */
+.testimonial-band { background: var(--ink); padding: 100px 80px; position: relative; overflow: hidden; }
+.testimonial-band::before { content: '\201C'; position: absolute; top: 20px; left: 60px; font-family: 'Cormorant Garamond', serif; font-size: 240px; color: rgba(201,168,76,0.07); line-height: 1; pointer-events: none; }
+.testimonial-inner { max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.testimonial-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 2.5vw, 32px); font-weight: 300; color: var(--white); line-height: 1.55; font-style: italic; margin-bottom: 36px; }
+.testimonial-author { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+
+/* CV BAND */
+.cv-band { background: var(--ink); padding: 72px 80px; position: relative; overflow: hidden; }
+.cv-band::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+.cv-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.cv-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--white); margin-bottom: 8px; }
+.cv-text p { font-size: 13px; color: rgba(255,255,255,0.4); font-family: 'DM Mono', monospace; letter-spacing: 0.06em; }
+.cv-actions { display: flex; gap: 16px; flex-shrink: 0; }
+
+/* BOOKING / CONTACT */
+.booking-section { background: var(--gold-pale); padding: 120px 80px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.booking-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.booking-left h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 3vw, 48px); font-weight: 300; color: var(--ink); line-height: 1.2; margin-bottom: 20px; }
+.booking-left p { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 36px; }
+.booking-options { display: flex; flex-direction: column; gap: 2px; }
+.booking-opt { background: var(--white); padding: 24px 28px; display: flex; align-items: center; gap: 20px; text-decoration: none; border: 1px solid transparent; transition: all 0.3s; }
+.booking-opt:hover { border-color: var(--gold); transform: translateX(6px); }
+.booking-opt-icon { width: 44px; height: 44px; border: 1.5px solid var(--rule); display: grid; place-items: center; font-size: 18px; flex-shrink: 0; transition: all 0.3s; }
+.booking-opt:hover .booking-opt-icon { border-color: var(--gold); background: var(--gold-pale); }
+.booking-opt-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.booking-opt-title { font-size: 14px; font-weight: 500; color: var(--ink); }
+.booking-opt-arrow { margin-left: auto; color: var(--gold); font-size: 16px; opacity: 0; transform: translateX(-8px); transition: all 0.3s; }
+.booking-opt:hover .booking-opt-arrow { opacity: 1; transform: translateX(0); }
+
+/* FORM */
+.form-section { background: var(--white); padding: 40px; border: 1px solid var(--rule); }
+.form-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.form-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 28px; font-family: 'DM Mono', monospace; letter-spacing: 0.06em; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-group { margin-bottom: 14px; }
+.form-group label { display: block; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 7px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--cream); border: 1px solid var(--rule); padding: 11px 14px; font-size: 13px; font-family: 'DM Sans', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; appearance: none; -webkit-appearance: none; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); background: var(--white); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+.form-submit { width: 100%; background: var(--ink); color: var(--white); border: none; padding: 14px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: all 0.25s; margin-top: 4px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.form-submit:hover { background: var(--gold); color: var(--ink); }
+.form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.form-message { margin-top: 12px; padding: 12px 16px; font-size: 12px; font-family: 'DM Mono', monospace; letter-spacing: 0.06em; display: none; }
+.form-message.success { background: rgba(45,106,79,0.08); border: 1px solid rgba(45,106,79,0.25); color: var(--success); display: block; }
+.form-message.error { background: rgba(155,35,53,0.08); border: 1px solid rgba(155,35,53,0.25); color: var(--error); display: block; }
+
+/* FOOTER */
+footer { background: #070A0E; padding: 60px 80px 40px; }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 32px; }
+.footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; color: var(--white); margin-bottom: 12px; }
+.footer-tagline { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.7; max-width: 260px; margin-bottom: 24px; }
+.footer-contact-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-contact-link { display: flex; align-items: center; gap: 10px; font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; font-family: 'DM Mono', monospace; letter-spacing: 0.04em; }
+.footer-contact-link:hover { color: var(--gold); }
+.footer-col-title { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; font-family: 'DM Mono', monospace; letter-spacing: 0.06em; }
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; }
+.footer-copy { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); }
+.footer-location { display: flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; } .reveal-d2 { transition-delay: 0.2s; } .reveal-d3 { transition-delay: 0.3s; } .reveal-d4 { transition-delay: 0.4s; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  nav { padding: 0 32px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero-inner { grid-template-columns: 1fr; gap: 60px; padding: 80px 40px; }
+  .hero-proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .proof-card { margin-bottom: 0; }
+  .problems-section, .services-wrap, .process-section, .booking-section, .cv-band, .testimonial-band { padding: 80px 40px; }
+  .industries-section { padding: 80px 40px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .problems-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .process-steps::before { display: none; }
+  .industries-strip { grid-template-columns: repeat(3, 1fr); }
+  .booking-inner { grid-template-columns: 1fr; gap: 48px; }
+  .footer-top { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .cv-inner { flex-direction: column; text-align: center; }
+  .cv-actions { justify-content: center; }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .hero-inner { padding: 60px 24px; }
+  .hero-headline { font-size: 36px; }
+  .hero-proof { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; }
+  .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
+  .problems-section, .services-wrap, .process-section, .booking-section, .cv-band, .testimonial-band { padding: 60px 24px; }
+  .industries-section { padding: 60px 24px; }
+  .industries-strip { grid-template-columns: 1fr 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  footer { padding: 48px 24px 32px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="nav-brand">
+    <div class="nav-diamond"><div class="nav-diamond-inner"></div></div>
+    <span class="nav-name">Kollur Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">Approach</a></li>
+    <li><a href="#industries">Sectors</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Book a Call</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div id="mobile-nav" style="display:none;position:fixed;inset:0;background:rgba(13,17,23,0.98);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:36px;">
+  <a href="#services" onclick="closeMobileNav()" style="font-family:'Cormorant Garamond',serif;font-size:32px;color:#fff;text-decoration:none;">Services</a>
+  <a href="#how" onclick="closeMobileNav()" style="font-family:'Cormorant Garamond',serif;font-size:32px;color:#fff;text-decoration:none;">Approach</a>
+  <a href="#industries" onclick="closeMobileNav()" style="font-family:'Cormorant Garamond',serif;font-size:32px;color:#fff;text-decoration:none;">Sectors</a>
+  <a href="#contact" onclick="closeMobileNav()" style="font-family:'Cormorant Garamond',serif;font-size:32px;color:#C9A84C;text-decoration:none;">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Supply Chain &amp; ERP Transformation</div>
+      <h1 class="hero-headline">Your supply chain<br>should be an <em>asset</em>,<br>not a liability.</h1>
+      <p class="hero-sub">I help European businesses find the value hidden in their supply chains — through ERP transformation, process intelligence, and hands-on program leadership that delivers measurable results at board level.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">&#128197; Book a Discovery Call</a>
+        <a href="#" class="btn-secondary" onclick="downloadCV(event)">&#11015; Download Capability Statement</a>
+      </div>
+    </div>
+    <div class="hero-proof">
+      <div class="proof-card">
+        <div class="proof-num">&#8364;50M<span style="font-size:28px">+</span></div>
+        <div class="proof-label">Working Capital Identified</div>
+        <div class="proof-context">Celonis process mining · European fashion brand · O2C &amp; P2P</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-num">10<span style="font-size:28px">%</span></div>
+        <div class="proof-label">Freight Spend Leakage Found</div>
+        <div class="proof-context">Closed-loop analytics · Global medical equipment manufacturer</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-num">25<span style="font-size:28px">+</span></div>
+        <div class="proof-label">Years of Experience</div>
+        <div class="proof-context">Consulting · Operations · C-Suite advisory · Pan-European</div>
+      </div>
+      <div class="location-tag"><div class="live-dot"></div>Netherlands · Available for Engagements</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="problem-band">
+  <div class="problem-ticker">
+    <span class="problem-item">ERP transformation at risk</span>
+    <span class="problem-item">Hidden logistics cost leakage</span>
+    <span class="problem-item">Supply chain carve-out</span>
+    <span class="problem-item">Working capital under pressure</span>
+    <span class="problem-item">Post-merger integration</span>
+    <span class="problem-item">SI governance gaps</span>
+    <span class="problem-item">Process inefficiency uncovered</span>
+    <span class="problem-item">Freight spend optimisation</span>
+    <span class="problem-item">ERP transformation at risk</span>
+    <span class="problem-item">Hidden logistics cost leakage</span>
+    <span class="problem-item">Supply chain carve-out</span>
+    <span class="problem-item">Working capital under pressure</span>
+    <span class="problem-item">Post-merger integration</span>
+    <span class="problem-item">SI governance gaps</span>
+    <span class="problem-item">Process inefficiency uncovered</span>
+    <span class="problem-item">Freight spend optimisation</span>
+  </div>
+</div>
+
+<!-- PROBLEMS -->
+<section class="problems-section">
+  <div class="problems-inner">
+    <div class="section-hd reveal">
+      <span class="section-num">Does this sound familiar?</span>
+      <div class="section-rule" style="background:linear-gradient(to right,var(--gold),transparent)"></div>
+    </div>
+    <div class="problems-grid">
+      <div class="problem-card reveal">
+        <div class="problem-q">"Our ERP project is over budget and six months behind — and I'm not sure the SI has our interests at heart."</div>
+        <div class="problem-a">I act as your <strong>independent program director</strong> — the experienced client-side voice that governs the SI, protects scope, and keeps your transformation on track from blueprint to hypercare.</div>
+      </div>
+      <div class="problem-card reveal reveal-d1">
+        <div class="problem-q">"We know we're spending too much on logistics, but we can't pinpoint where the money is going."</div>
+        <div class="problem-a">Using <strong>process mining and closed-loop analytics</strong>, I map exactly where value is leaking — then build an executive roadmap to recover it. One client recovered 10% of their total freight spend.</div>
+      </div>
+      <div class="problem-card reveal reveal-d2">
+        <div class="problem-q">"We're going through a carve-out and need someone who has done this before — not someone learning on the job."</div>
+        <div class="problem-a">I have led <strong>multiple ERP separations and carve-outs</strong>, aligning IT, finance, and supply chain on a single roadmap and governing cutover without disrupting operations.</div>
+      </div>
+      <div class="problem-card reveal reveal-d3">
+        <div class="problem-q">"Our supply chain complexity has outgrown our internal capability — but we're not ready to hire a full-time CSCO."</div>
+        <div class="problem-a">A <strong>fractional advisory model</strong> gives you board-level supply chain expertise exactly when you need it — without the overhead of a full-time executive hire.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services-wrap">
+  <div class="services-inner">
+    <div class="section-hd reveal">
+      <span class="section-num">01 — Services</span>
+      <h2 class="section-title">What I Can Do For You</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="services-grid reveal">
+      <div class="svc-card">
+        <div class="svc-num">Service 01</div>
+        <span class="svc-icon">&#128279;</span>
+        <h3 class="svc-title">Supply Chain &amp; Logistics Transformation</h3>
+        <div class="svc-tag">Diagnostics · Process Mining · Optimisation</div>
+        <p class="svc-desc">From uncovering hidden cost leakage to redesigning your end-to-end supply chain. I combine process mining (Celonis), transportation management expertise, and working capital analytics to build a clear, financially-grounded improvement roadmap.</p>
+        <ul class="svc-list">
+          <li>Supply chain diagnostic &amp; executive roadmap</li>
+          <li>Process mining (Celonis) — O2C and P2P flow analysis</li>
+          <li>Oracle OTM transportation management transformation</li>
+          <li>Freight spend analysis and leakage recovery</li>
+          <li>Working capital improvement programs</li>
+          <li>Target Operating Model design</li>
+        </ul>
+        <div class="svc-footer">
+          <div class="svc-rate">&#8364;1,600–&#8364;2,000 <small>/ day</small></div>
+          <div class="svc-badge">Flagship</div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">Service 02</div>
+        <span class="svc-icon">&#127959;</span>
+        <h3 class="svc-title">ERP Program Management &amp; Governance</h3>
+        <div class="svc-tag">SAP · Oracle · MS Dynamics 365</div>
+        <p class="svc-desc">Your experienced, independent program director on complex ERP transformations. I protect your interests, govern cutover with precision, and translate technical progress into board-level business outcomes throughout the full program lifecycle.</p>
+        <ul class="svc-list">
+          <li>Independent ERP program director / senior PMO</li>
+          <li>ERP carve-out and separation governance</li>
+          <li>RAID management and executive steering leadership</li>
+          <li>Cutover planning and hypercare stabilisation</li>
+          <li>Vendor and SI management — client-side</li>
+          <li>Business case and value realisation tracking</li>
+        </ul>
+        <div class="svc-footer">
+          <div class="svc-rate">&#8364;1,800–&#8364;2,500 <small>/ day</small></div>
+          <div class="svc-badge">High Value</div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">Service 03</div>
+        <span class="svc-icon">&#127919;</span>
+        <h3 class="svc-title">Strategic Advisory &amp; Interim Leadership</h3>
+        <div class="svc-tag">Fractional CSCO · Executive Retainer · M&amp;A</div>
+        <p class="svc-desc">Senior supply chain leadership on a flexible basis — without the full-time hire. Available as a fractional CSCO, interim VP Supply Chain, or ongoing advisory partner for executives who need a trusted, experienced sounding board at the strategic level.</p>
+        <ul class="svc-list">
+          <li>Fractional / Interim CSCO or VP Supply Chain</li>
+          <li>Monthly executive advisory retainer (2–4 days)</li>
+          <li>M&amp;A supply chain due diligence</li>
+          <li>Post-acquisition integration leadership</li>
+          <li>Board-level supply chain reporting and narrative</li>
+          <li>Transformation roadmap development</li>
+        </ul>
+        <div class="svc-footer">
+          <div class="svc-rate">&#8364;5K–&#8364;8K <small>/ month</small></div>
+          <div class="svc-badge">Strategic</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="how" class="process-section">
+  <div class="process-inner">
+    <div class="section-hd reveal">
+      <span class="section-num">02 — Approach</span>
+      <h2 class="section-title">How I Work</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-num"><span class="step-n">1</span></div>
+        <div class="step-title">Understand</div>
+        <p class="step-desc">A focused discovery conversation to understand your situation, constraints, and what success looks like — before any proposal is written.</p>
+      </div>
+      <div class="step reveal reveal-d1">
+        <div class="step-num"><span class="step-n">2</span></div>
+        <div class="step-title">Diagnose</div>
+        <p class="step-desc">Structured assessment of your current state — processes, systems, data, and people — to identify where the real opportunities and risks sit.</p>
+      </div>
+      <div class="step reveal reveal-d2">
+        <div class="step-num"><span class="step-n">3</span></div>
+        <div class="step-title">Design</div>
+        <p class="step-desc">A clear, sequenced roadmap prioritised by value and feasibility — with a business case your CFO can believe and a plan your team can execute.</p>
+      </div>
+      <div class="step reveal reveal-d3">
+        <div class="step-num"><span class="step-n">4</span></div>
+        <div class="step-title">Deliver</div>
+        <p class="step-desc">Hands-on program leadership from blueprint through to cutover, hypercare, and value realisation — not advisory from a distance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries" class="industries-section">
+  <div class="section-hd reveal">
+    <span class="section-num">03 — Sectors</span>
+    <h2 class="section-title">Industries I Serve</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="industries-strip reveal">
+    <div class="ind-item"><span class="ind-icon">&#128663;</span><div class="ind-name">Automotive &amp; Manufacturing</div></div>
+    <div class="ind-item"><span class="ind-icon">&#9881;</span><div class="ind-name">Industrial &amp; Motion Technology</div></div>
+    <div class="ind-item"><span class="ind-icon">&#127973;</span><div class="ind-name">Medical Equipment &amp; Life Sciences</div></div>
+    <div class="ind-item"><span class="ind-icon">&#128247;</span><div class="ind-name">Fashion &amp; Retail</div></div>
+    <div class="ind-item"><span class="ind-icon">&#128230;</span><div class="ind-name">Logistics, 3PL &amp; 4PL</div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial-band">
+  <div class="testimonial-inner reveal">
+    <p class="testimonial-text">"What makes Sridhar different is that he has actually stood in the warehouse, managed the cutover at 2am, and walked into the boardroom the next morning to explain the results. That combination of operational credibility and executive communication is exceptionally rare."</p>
+    <div class="testimonial-author">Former Client — Global Manufacturing Business, Netherlands</div>
+  </div>
+</section>
+
+<!-- CV BAND -->
+<div class="cv-band">
+  <div class="cv-inner">
+    <div class="cv-text">
+      <h3>Want the full picture?</h3>
+      <p>Download my capability statement — a complete overview of services, track record, and engagement model.</p>
+    </div>
+    <div class="cv-actions">
+      <a href="#" class="btn-primary" onclick="downloadCV(event)">&#11015; Download CV</a>
+      <a href="https://www.linkedin.com/in/sridharkollur" target="_blank" class="btn-secondary">in&nbsp; LinkedIn Profile</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="booking-section">
+  <div class="booking-inner">
+    <div class="booking-left reveal">
+      <h2>Let's start a<br><em style="font-style:italic;color:var(--gold)">conversation.</em></h2>
+      <p>Whether you have a specific challenge in mind or simply want to explore whether there is a fit — I make it easy to get in touch. Choose the option that works best for you.</p>
+      <div class="booking-options">
+        <a href="https://calendly.com/kollursridhar" target="_blank" class="booking-opt">
+          <div class="booking-opt-icon">&#128197;</div>
+          <div><div class="booking-opt-label">Fastest</div><div class="booking-opt-title">Book a 30-minute discovery call</div></div>
+          <div class="booking-opt-arrow">&#8594;</div>
+        </a>
+        <a href="mailto:kollursridhar@gmail.com" class="booking-opt">
+          <div class="booking-opt-icon">&#9993;</div>
+          <div><div class="booking-opt-label">Email Direct</div><div class="booking-opt-title">kollursridhar@gmail.com</div></div>
+          <div class="booking-opt-arrow">&#8594;</div>
+        </a>
+        <a href="tel:+31687948395" class="booking-opt">
+          <div class="booking-opt-icon">&#9990;</div>
+          <div><div class="booking-opt-label">Call or WhatsApp</div><div class="booking-opt-title">+31 687 948 395</div></div>
+          <div class="booking-opt-arrow">&#8594;</div>
+        </a>
+        <a href="https://www.linkedin.com/in/sridharkollur" target="_blank" class="booking-opt">
+          <div class="booking-opt-icon" style="font-weight:600;font-family:'DM Mono',monospace;font-size:13px;">in</div>
+          <div><div class="booking-opt-label">LinkedIn</div><div class="booking-opt-title">linkedin.com/in/sridharkollur</div></div>
+          <div class="booking-opt-arrow">&#8594;</div>
+        </a>
+      </div>
+    </div>
+    <div class="form-section reveal reveal-d2">
+      <div class="form-title">Send a Message</div>
+      <div class="form-sub">I respond within one business day</div>
+      <form id="contact-form" onsubmit="handleSubmit(event)" novalidate>
+        <div class="form-row">
+          <div class="form-group"><label for="fname">First Name *</label><input type="text" id="fname" name="fname" placeholder="Jan" required></div>
+          <div class="form-group"><label for="lname">Last Name *</label><input type="text" id="lname" name="lname" placeholder="de Vries" required></div>
+        </div>
+        <div class="form-group"><label for="email">Work Email *</label><input type="email" id="email" name="email" placeholder="jan@company.com" required></div>
+        <div class="form-group"><label for="company">Company</label><input type="text" id="company" name="company" placeholder="Your organisation"></div>
+        <div class="form-group">
+          <label for="interest">I'm interested in</label>
+          <select id="interest" name="interest">
+            <option value="">Select a service area...</option>
+            <option value="sc-transformation">Supply Chain &amp; Logistics Transformation</option>
+            <option value="erp-program">ERP Program Management &amp; Governance</option>
+            <option value="strategic-advisory">Strategic Advisory / Fractional CSCO</option>
+            <option value="process-mining">Process Mining (Celonis)</option>
+            <option value="carve-out">Carve-out / Separation Governance</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+        <div class="form-group"><label for="message">Tell me about your challenge *</label><textarea id="message" name="message" placeholder="Briefly describe what you're working on or the challenge you're facing..." required></textarea></div>
+        <button type="submit" class="form-submit" id="submit-btn"><span id="btn-text">Send Message &#8594;</span></button>
+        <div class="form-message" id="form-msg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Sridhar Kollur</div>
+      <p class="footer-tagline">Senior Supply Chain &amp; ERP Transformation Advisor. 25+ years delivering measurable results for European businesses. Netherlands-based, pan-European reach.</p>
+      <div class="footer-contact-links">
+        <a href="mailto:kollursridhar@gmail.com" class="footer-contact-link">&#9993; kollursridhar@gmail.com</a>
+        <a href="tel:+31687948395" class="footer-contact-link">&#9990; +31 687 948 395</a>
+        <a href="https://www.linkedin.com/in/sridharkollur" target="_blank" class="footer-contact-link">in linkedin.com/in/sridharkollur</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Supply Chain Transformation</a></li>
+        <li><a href="#services">ERP Program Management</a></li>
+        <li><a href="#services">Strategic Advisory</a></li>
+        <li><a href="#services">Process Mining</a></li>
+        <li><a href="#services">Interim CSCO</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="#contact">Book a Call</a></li>
+        <li><a href="#" onclick="downloadCV(event)">Download CV</a></li>
+        <li><a href="https://www.linkedin.com/in/sridharkollur" target="_blank">LinkedIn</a></li>
+        <li><a href="#how">My Approach</a></li>
+        <li><a href="#industries">Sectors</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">&#169; 2025 Sridhar Kollur — All rights reserved</div>
+    <div class="footer-location"><div class="live-dot"></div>Netherlands · Available for Engagements</div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+function toggleMobileNav() {
+  const n = document.getElementById('mobile-nav');
+  n.style.display = n.style.display === 'flex' ? 'none' : 'flex';
+}
+function closeMobileNav() { document.getElementById('mobile-nav').style.display = 'none'; }
+
+const svcObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.svc-card').forEach((c, i) => {
+        setTimeout(() => { c.style.opacity = '1'; c.style.transform = 'translateY(0)'; }, i * 150);
+      });
+    }
+  });
+}, { threshold: 0.1 });
+const sg = document.querySelector('.services-grid');
+if (sg) {
+  sg.querySelectorAll('.svc-card').forEach(c => { c.style.opacity = '0'; c.style.transform = 'translateY(20px)'; c.style.transition = 'opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s'; });
+  svcObserver.observe(sg);
+}
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  const msg = document.getElementById('form-msg');
+  const btn = document.getElementById('submit-btn');
+  const btnText = document.getElementById('btn-text');
+  const fname = document.getElementById('fname').value.trim();
+  const lname = document.getElementById('lname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  if (!fname || !lname || !email || !message) {
+    msg.className = 'form-message error'; msg.textContent = 'Please fill in all required fields.'; return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    msg.className = 'form-message error'; msg.textContent = 'Please enter a valid email address.'; return;
+  }
+  btn.disabled = true; btnText.textContent = 'Sending...';
+  msg.className = 'form-message'; msg.style.display = 'none';
+  await new Promise(r => setTimeout(r, 1000));
+  const company = document.getElementById('company').value;
+  const interest = document.getElementById('interest').value;
+  const subject = encodeURIComponent('Enquiry from ' + fname + ' ' + lname + (company ? ' — ' + company : ''));
+  const body = encodeURIComponent('Name: ' + fname + ' ' + lname + '\nEmail: ' + email + '\nCompany: ' + (company || 'Not provided') + '\nService Interest: ' + (interest || 'Not specified') + '\n\nMessage:\n' + message);
+  window.location.href = 'mailto:kollursridhar@gmail.com?subject=' + subject + '&body=' + body;
+  btn.disabled = false; btnText.textContent = 'Send Message \u2192';
+  msg.className = 'form-message success';
+  msg.textContent = '\u2713 Opening your email client... If nothing opens, email kollursridhar@gmail.com directly.';
+  document.getElementById('contact-form').reset();
+}
+
+function downloadCV(e) {
+  e.preventDefault();
+  const cv = `SRIDHAR KOLLUR
+Senior Supply Chain & ERP Transformation Advisor
+Netherlands | +31 687 948 395 | kollursridhar@gmail.com
+LinkedIn: linkedin.com/in/sridharkollur
+
+================================================
+
+WHAT I DO
+
+I help European businesses find and unlock value hidden in their supply
+chains through ERP transformation, process intelligence (Celonis), and
+hands-on program leadership that delivers measurable, board-level results.
+
+================================================
+
+SERVICES
+
+1. SUPPLY CHAIN & LOGISTICS TRANSFORMATION       Rate: EUR 1,600-2,000/day
+   Supply chain diagnostics, process mining (Celonis), Oracle OTM
+   transformation, freight spend analysis, working capital improvement,
+   and Target Operating Model design.
+
+2. ERP PROGRAM MANAGEMENT & GOVERNANCE           Rate: EUR 1,800-2,500/day
+   Independent program director for SAP, Oracle, and MS Dynamics 365.
+   ERP carve-outs, cutover governance, SI management (client-side),
+   RAID management, executive steering, and value realisation tracking.
+
+3. STRATEGIC ADVISORY & INTERIM LEADERSHIP       Rate: EUR 5,000-8,000/month
+   Fractional CSCO, interim VP Supply Chain, executive advisory retainer,
+   M&A supply chain due diligence, and board-level reporting.
+
+================================================
+
+SELECTED IMPACT
+
+  EUR 50M+ working capital identified
+  Celonis process mining - European fashion brand - O2C and P2P
+
+  10% freight spend leakage uncovered
+  Closed-loop analytics - Global medical equipment manufacturer
+
+  20-30% logistics cost reduction target
+  Oracle OTM global transformation - Motion-technology manufacturer
+
+  EUR 10M+ annual portfolio managed
+  150-member distributed team - Multiple European clients
+
+================================================
+
+CAREER
+
+2020-Present  Consulting Partner / Program Director
+              Wipro Consulting, Netherlands
+
+2016-2020     Digital Delivery Lead
+              Cognizant, Spain (European Nearshore)
+
+2009-2016     Senior Manager, Consulting
+              Cognizant, United Kingdom
+
+2000-2009     Operations & Program Leadership
+              Wipro | DHL | ILIS | Sembcorp Logistics
+
+================================================
+
+PLATFORMS & TOOLS
+ERP:       SAP ERP, SAP IBP, Oracle OTM, Oracle Cloud, MS Dynamics 365
+Analytics: Celonis, KPI Dashboards, Working Capital Analytics
+Methods:   RAID Governance, Agile/SAFe, Cutover Planning, Change Mgmt
+
+SECTORS
+Automotive | Industrial/Manufacturing | Medical Equipment
+Fashion/Retail | Logistics / 3PL / 4PL
+
+================================================
+
+EDUCATION
+MBA (Finance)  - ICFAI Business School, Chennai
+BSc            - Allahabad University
+
+================================================
+Available for engagements across the Netherlands and Pan-Europe.`;
+  const blob = new Blob([cv], {type: 'text/plain'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'Sridhar_Kollur_Capability_Statement.txt';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+</script>
+</body>
+</html>
